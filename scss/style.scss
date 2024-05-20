@@ -1,5 +1,6 @@
 @charset 'UTF-8';
 @import "card";
+@import "nav";
 
 $textWhite: white;
 $textGold: #c09a4f;
@@ -13,6 +14,11 @@ $bgHolographic: #a7aed0;
   text-decoration: none;
 }
 
+figure {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
 body {
   width: 100%;
   height: 100vh;
@@ -20,62 +26,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #1c0d05;
   background-color: #181818;
 }
 
 header {
-  h1 {
+  p {
+    font-family: "Libre Bodoni", serif;
+    font-size: 3rem;
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: -2px;
+    color: $textGold;
     color: $textWhite;
-  }
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-
-  li {
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 160px;
-    height: 40px;
-    border-radius: 20px;
-    border: 1px solid $textWhite;
-
-    margin-right: 40px;
-
-    &:nth-last-of-type(1) {
-      margin-right: 0;
-    }
-
-    a {
-      color: $textWhite;
-      text-transform: capitalize;
-    }
-
-    &.on {
-      @import "variations";
-      border: none;
-
-      &.plastic {
-        background-color: $textWhite;
-
-        a {
-          color: #181818;
-        }
-      }
-      &.gold {
-        background-color: $textGold;
-      }
-      &.peral {
-        background-color: $bgPearl;
-      }
-      &.holographic {
-        background-color: $bgHolographic;
-      }
-    }
   }
 }

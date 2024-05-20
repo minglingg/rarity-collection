@@ -2,17 +2,13 @@ $textGold: #c09a4f;
 $bgPearl: #657ed6;
 $bgHolographic: #a7aed0;
 
-&.plastic {
-  background-color: #fff;
-}
-
+&.plastic,
 &.gold,
 &.pearl,
 &.holographic {
   overflow: hidden;
 
   .texture {
-    content: "";
     background-size: cover;
 
     position: absolute;
@@ -23,13 +19,21 @@ $bgHolographic: #a7aed0;
   }
 }
 
+&.plastic {
+  background-color: #fff;
+
+  .texture {
+    display: none;
+  }
+}
+
 &.gold {
   background-color: #fff;
 
   .texture.top {
     background-image: url("/src/gold.png");
     mix-blend-mode: color-dodge;
-    background-position: 50% 0;
+    background-position: 0% 0%;
   }
 }
 

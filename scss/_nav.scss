@@ -1,0 +1,69 @@
+$textWhite: white;
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  li {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 160px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid $textWhite;
+    cursor: pointer;
+
+    margin-right: 40px;
+
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+
+    a {
+      color: $textWhite;
+      text-transform: capitalize;
+      font-size: medium;
+      font-family: "jsMath-cmti10";
+    }
+
+    &.on {
+      @import "variations";
+      border: none;
+
+      &.plastic {
+        background-color: $textWhite;
+
+        a {
+          color: #181818;
+        }
+      }
+      &.gold {
+        background-color: $textGold;
+      }
+      &.peral {
+        background-color: $bgPearl;
+      }
+      &.holographic {
+        background-color: $bgHolographic;
+      }
+
+      .texture {
+        animation: 3.5s ease-in-out 0s move-background-position infinite
+          alternate;
+      }
+    }
+  }
+}
+
+@keyframes move-background-position {
+  0% {
+    background-position-y: 50%;
+  }
+  100% {
+    background-position-y: 100%;
+  }
+}

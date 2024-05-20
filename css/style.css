@@ -4,24 +4,49 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 section article {
-  position: relative;
-  border-radius: 5%;
+  cursor: pointer;
+}
+section article:nth-of-type(1) {
+  z-index: 1;
+  width: 15vw;
+  transform: rotate(-15deg) translateY(0);
+  margin-right: 1.5vw;
+}
+section article:nth-of-type(2) {
+  z-index: 0;
+  width: 11.25vw;
+  transform: rotate(10deg) translateY(1.875vw);
+}
+section article:nth-of-type(3) {
+  z-index: 1;
+  width: 13.125vw;
+  transform: rotate(-10deg) translateY(6.375vw);
+  margin-right: 2.625vw;
+}
+section article:nth-of-type(4) {
+  z-index: 0;
+  width: 11.25vw;
+  transform: rotate(20deg) translateY(0);
+}
+section article figure,
+section article .back {
+  border-radius: 0.75vw;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-section article.plastic {
-  background-color: #fff;
+section article figure {
+  position: relative;
+  aspect-ratio: 2/3;
+  backface-visibility: hidden;
 }
-section article.gold, section article.pearl, section article.holographic {
+section article figure.plastic, section article figure.gold, section article figure.pearl, section article figure.holographic {
   overflow: hidden;
 }
-section article.gold .texture, section article.pearl .texture, section article.holographic .texture {
-  content: "";
+section article figure.plastic .texture, section article figure.gold .texture, section article figure.pearl .texture, section article figure.holographic .texture {
   background-size: cover;
   position: absolute;
   top: 0;
@@ -29,80 +54,114 @@ section article.gold .texture, section article.pearl .texture, section article.h
   width: 100%;
   height: 100%;
 }
-section article.gold {
+section article figure.plastic {
   background-color: #fff;
 }
-section article.gold .texture.top {
+section article figure.plastic .texture {
+  display: none;
+}
+section article figure.gold {
+  background-color: #fff;
+}
+section article figure.gold .texture.top {
   background-image: url("/src/gold.png");
   mix-blend-mode: color-dodge;
-  background-position: 50% 0;
+  background-position: 0% 0%;
 }
-section article.pearl {
+section article figure.pearl {
   background-color: #657ed6;
 }
-section article.pearl .texture.bottom {
+section article figure.pearl .texture.bottom {
   background-image: url("/src/pearl.png");
   mix-blend-mode: overlay;
   background-position: 50% 50%;
 }
-section article.holographic {
+section article figure.holographic {
   background-color: #a7aed0;
 }
-section article.holographic .texture.bottom {
+section article figure.holographic .texture.bottom {
   background-image: url("/src/holographic.png");
   mix-blend-mode: overlay;
   background-position: 50% 50%;
 }
-section article:nth-of-type(1) {
-  z-index: 1;
-  width: 200px;
-  height: 300px;
-  transform: rotate(-15deg);
-}
-section article:nth-of-type(2) {
-  z-index: 0;
-  width: 150px;
-  height: 225px;
-  transform: rotate(10deg);
-}
-section article:nth-of-type(3) {
-  z-index: 1;
-  width: 175px;
-  height: 262.5px;
-  transform: rotate(-10deg);
-}
-section article:nth-of-type(4) {
-  z-index: 0;
-  width: 150px;
-  height: 225px;
-  transform: rotate(20deg);
-}
-section article img {
+section article figure img {
   width: 100%;
   height: 100%;
 }
-
-* {
-  box-sizing: border-box;
-  padding: 0 0;
-  margin: 0;
-  text-decoration: none;
-}
-
-body {
+section article .back {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 100vh;
-  padding: 15vh 15vw 10vh 15vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #181818;
+  height: 100%;
+  background-color: #fff;
+  border: 0.75vw solid #fff;
+  background-image: url(/src/card_back.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+section article.flip:nth-of-type(1) figure {
+  animation: 1.2s ease-out calc(0.2s * 0) flip-card;
+}
+section article.flip:nth-of-type(1) .back {
+  animation: 1.2s ease-out calc(0.2s * 0) flip-card-back;
+}
+section article.flip:nth-of-type(2) figure {
+  animation: 1.2s ease-out calc(0.2s * 1) flip-card;
+}
+section article.flip:nth-of-type(2) .back {
+  animation: 1.2s ease-out calc(0.2s * 1) flip-card-back;
+}
+section article.flip:nth-of-type(3) figure {
+  animation: 1.2s ease-out calc(0.2s * 2) flip-card;
+}
+section article.flip:nth-of-type(3) .back {
+  animation: 1.2s ease-out calc(0.2s * 2) flip-card-back;
+}
+section article.flip:nth-of-type(4) figure {
+  animation: 1.2s ease-out calc(0.2s * 3) flip-card;
+}
+section article.flip:nth-of-type(4) .back {
+  animation: 1.2s ease-out calc(0.2s * 3) flip-card-back;
 }
 
-header h1 {
-  color: white;
+@keyframes flip-card {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(60deg);
+  }
+  50% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(180deg);
+  }
+  60% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(360deg);
+  }
 }
-
+@keyframes flip-card-back {
+  0% {
+    transform: perspective(800px) rotateY(180deg);
+  }
+  10% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(240deg);
+  }
+  50% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(360deg);
+  }
+  60% {
+    transform: perspective(800px) translateX(-2.25vw) rotateY(360deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(180deg);
+  }
+}
 nav {
   display: flex;
   justify-content: center;
@@ -116,6 +175,7 @@ nav li {
   height: 40px;
   border-radius: 20px;
   border: 1px solid white;
+  cursor: pointer;
   margin-right: 40px;
 }
 nav li:nth-last-of-type(1) {
@@ -124,18 +184,16 @@ nav li:nth-last-of-type(1) {
 nav li a {
   color: white;
   text-transform: capitalize;
+  font-size: medium;
+  font-family: "jsMath-cmti10";
 }
 nav li.on {
   border: none;
 }
-nav li.on.plastic {
-  background-color: #fff;
-}
-nav li.on.gold, nav li.on.pearl, nav li.on.holographic {
+nav li.on.plastic, nav li.on.gold, nav li.on.pearl, nav li.on.holographic {
   overflow: hidden;
 }
-nav li.on.gold .texture, nav li.on.pearl .texture, nav li.on.holographic .texture {
-  content: "";
+nav li.on.plastic .texture, nav li.on.gold .texture, nav li.on.pearl .texture, nav li.on.holographic .texture {
   background-size: cover;
   position: absolute;
   top: 0;
@@ -143,13 +201,19 @@ nav li.on.gold .texture, nav li.on.pearl .texture, nav li.on.holographic .textur
   width: 100%;
   height: 100%;
 }
+nav li.on.plastic {
+  background-color: #fff;
+}
+nav li.on.plastic .texture {
+  display: none;
+}
 nav li.on.gold {
   background-color: #fff;
 }
 nav li.on.gold .texture.top {
   background-image: url("/src/gold.png");
   mix-blend-mode: color-dodge;
-  background-position: 50% 0;
+  background-position: 0% 0%;
 }
 nav li.on.pearl {
   background-color: #657ed6;
@@ -181,6 +245,50 @@ nav li.on.peral {
 }
 nav li.on.holographic {
   background-color: #a7aed0;
+}
+nav li.on .texture {
+  animation: 3.5s ease-in-out 0s move-background-position infinite alternate;
+}
+
+@keyframes move-background-position {
+  0% {
+    background-position-y: 50%;
+  }
+  100% {
+    background-position-y: 100%;
+  }
+}
+* {
+  box-sizing: border-box;
+  padding: 0 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+figure {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 15vh 15vw 10vh 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1c0d05;
+  background-color: #181818;
+}
+
+header p {
+  font-family: "Libre Bodoni", serif;
+  font-size: 3rem;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: -2px;
+  color: #c09a4f;
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
