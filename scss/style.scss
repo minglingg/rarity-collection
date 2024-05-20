@@ -1,0 +1,81 @@
+@charset 'UTF-8';
+@import "card";
+
+$textWhite: white;
+$textGold: #c09a4f;
+$bgPearl: #657ed6;
+$bgHolographic: #a7aed0;
+
+* {
+  box-sizing: border-box;
+  padding: 0 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 15vh 15vw 10vh 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #181818;
+}
+
+header {
+  h1 {
+    color: $textWhite;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  li {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 160px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid $textWhite;
+
+    margin-right: 40px;
+
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+
+    a {
+      color: $textWhite;
+      text-transform: capitalize;
+    }
+
+    &.on {
+      @import "variations";
+      border: none;
+
+      &.plastic {
+        background-color: $textWhite;
+
+        a {
+          color: #181818;
+        }
+      }
+      &.gold {
+        background-color: $textGold;
+      }
+      &.peral {
+        background-color: $bgPearl;
+      }
+      &.holographic {
+        background-color: $bgHolographic;
+      }
+    }
+  }
+}

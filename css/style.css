@@ -1,0 +1,186 @@
+section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section article {
+  position: relative;
+  border-radius: 5%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+section article.plastic {
+  background-color: #fff;
+}
+section article.gold, section article.pearl, section article.holographic {
+  overflow: hidden;
+}
+section article.gold .texture, section article.pearl .texture, section article.holographic .texture {
+  content: "";
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+section article.gold {
+  background-color: #fff;
+}
+section article.gold .texture.top {
+  background-image: url("/src/gold.png");
+  mix-blend-mode: color-dodge;
+  background-position: 50% 0;
+}
+section article.pearl {
+  background-color: #657ed6;
+}
+section article.pearl .texture.bottom {
+  background-image: url("/src/pearl.png");
+  mix-blend-mode: overlay;
+  background-position: 50% 50%;
+}
+section article.holographic {
+  background-color: #a7aed0;
+}
+section article.holographic .texture.bottom {
+  background-image: url("/src/holographic.png");
+  mix-blend-mode: overlay;
+  background-position: 50% 50%;
+}
+section article:nth-of-type(1) {
+  z-index: 1;
+  width: 200px;
+  height: 300px;
+  transform: rotate(-15deg);
+}
+section article:nth-of-type(2) {
+  z-index: 0;
+  width: 150px;
+  height: 225px;
+  transform: rotate(10deg);
+}
+section article:nth-of-type(3) {
+  z-index: 1;
+  width: 175px;
+  height: 262.5px;
+  transform: rotate(-10deg);
+}
+section article:nth-of-type(4) {
+  z-index: 0;
+  width: 150px;
+  height: 225px;
+  transform: rotate(20deg);
+}
+section article img {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 15vh 15vw 10vh 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #181818;
+}
+
+header h1 {
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+nav li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid white;
+  margin-right: 40px;
+}
+nav li:nth-last-of-type(1) {
+  margin-right: 0;
+}
+nav li a {
+  color: white;
+  text-transform: capitalize;
+}
+nav li.on {
+  border: none;
+}
+nav li.on.plastic {
+  background-color: #fff;
+}
+nav li.on.gold, nav li.on.pearl, nav li.on.holographic {
+  overflow: hidden;
+}
+nav li.on.gold .texture, nav li.on.pearl .texture, nav li.on.holographic .texture {
+  content: "";
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+nav li.on.gold {
+  background-color: #fff;
+}
+nav li.on.gold .texture.top {
+  background-image: url("/src/gold.png");
+  mix-blend-mode: color-dodge;
+  background-position: 50% 0;
+}
+nav li.on.pearl {
+  background-color: #657ed6;
+}
+nav li.on.pearl .texture.bottom {
+  background-image: url("/src/pearl.png");
+  mix-blend-mode: overlay;
+  background-position: 50% 50%;
+}
+nav li.on.holographic {
+  background-color: #a7aed0;
+}
+nav li.on.holographic .texture.bottom {
+  background-image: url("/src/holographic.png");
+  mix-blend-mode: overlay;
+  background-position: 50% 50%;
+}
+nav li.on.plastic {
+  background-color: white;
+}
+nav li.on.plastic a {
+  color: #181818;
+}
+nav li.on.gold {
+  background-color: #c09a4f;
+}
+nav li.on.peral {
+  background-color: #657ed6;
+}
+nav li.on.holographic {
+  background-color: #a7aed0;
+}
+
+/*# sourceMappingURL=style.css.map */
