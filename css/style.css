@@ -1,52 +1,45 @@
-section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+article {
+  position: relative;
 }
-section article {
-  cursor: pointer;
-}
-section article:nth-of-type(1) {
+article:nth-of-type(1) {
   z-index: 1;
-  width: 15vw;
+  width: 12vw;
   transform: rotate(-15deg) translateY(0);
-  margin-right: 1.5vw;
+  margin-right: 1.2vw;
 }
-section article:nth-of-type(2) {
+article:nth-of-type(2) {
   z-index: 0;
-  width: 11.25vw;
-  transform: rotate(10deg) translateY(1.875vw);
+  width: 9vw;
+  transform: rotate(10deg) translateY(1.5vw);
 }
-section article:nth-of-type(3) {
+article:nth-of-type(3) {
   z-index: 1;
-  width: 13.125vw;
-  transform: rotate(-10deg) translateY(6.375vw);
-  margin-right: 2.625vw;
+  width: 10.5vw;
+  transform: rotate(-10deg) translateY(5.1vw);
+  margin-right: 2.1vw;
 }
-section article:nth-of-type(4) {
+article:nth-of-type(4) {
   z-index: 0;
-  width: 11.25vw;
+  width: 9vw;
   transform: rotate(20deg) translateY(0);
 }
-section article figure,
-section article .back {
-  border-radius: 0.75vw;
+article figure,
+article .back {
+  border-radius: 0.6vw;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 0.25px solid #000;
 }
-section article figure {
+article figure {
+  cursor: pointer;
   position: relative;
   aspect-ratio: 2/3;
   backface-visibility: hidden;
+  transition: all 0.1s;
 }
-section article figure.plastic, section article figure.gold, section article figure.pearl, section article figure.holographic {
+article figure.plastic, article figure.gold, article figure.pearl, article figure.holographic {
   overflow: hidden;
 }
-section article figure.plastic .texture, section article figure.gold .texture, section article figure.pearl .texture, section article figure.holographic .texture {
+article figure.plastic .texture, article figure.gold .texture, article figure.pearl .texture, article figure.holographic .texture {
   background-size: cover;
   position: absolute;
   top: 0;
@@ -54,48 +47,59 @@ section article figure.plastic .texture, section article figure.gold .texture, s
   width: 100%;
   height: 100%;
 }
-section article figure.plastic {
+article figure.plastic {
   background-color: #fff;
 }
-section article figure.plastic .texture {
+article figure.plastic .texture {
   display: none;
 }
-section article figure.gold {
+article figure.gold {
   background-color: #fff;
 }
-section article figure.gold .texture.top {
+article figure.gold .texture.top {
   background-image: url("/src/gold.png");
   mix-blend-mode: color-dodge;
   background-position: 0% 0%;
 }
-section article figure.pearl {
+article figure.pearl {
   background-color: #657ed6;
 }
-section article figure.pearl .texture.bottom {
+article figure.pearl .texture.bottom {
   background-image: url("/src/pearl.png");
   mix-blend-mode: overlay;
   background-position: 50% 50%;
 }
-section article figure.holographic {
+article figure.holographic {
   background-color: #a7aed0;
 }
-section article figure.holographic .texture.bottom {
+article figure.holographic .texture.bottom {
   background-image: url("/src/holographic.png");
   mix-blend-mode: overlay;
   background-position: 50% 50%;
 }
-section article figure img {
+article figure .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 219, 112, 0.8) 45%, rgba(132, 50, 255, 0.6) 50%, transparent 54%);
+  filter: brightness(1.1) opacity(0.8);
+  mix-blend-mode: color-dodge;
+  background-size: 150% 150%;
+  background-position: 100%;
+  transition: all 0.1s;
+}
+article figure img {
   width: 100%;
   height: 100%;
 }
-section article .back {
+article .back {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: #fff;
-  border: 0.75vw solid #fff;
+  border: 0.6vw solid #fff;
   background-image: url(/src/card_back.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -103,28 +107,28 @@ section article .back {
   backface-visibility: hidden;
   transform: rotateY(180deg);
 }
-section article.flip:nth-of-type(1) figure {
+article.flip:nth-of-type(1) figure {
   animation: 1.2s ease-out calc(0.2s * 0) flip-card;
 }
-section article.flip:nth-of-type(1) .back {
+article.flip:nth-of-type(1) .back {
   animation: 1.2s ease-out calc(0.2s * 0) flip-card-back;
 }
-section article.flip:nth-of-type(2) figure {
+article.flip:nth-of-type(2) figure {
   animation: 1.2s ease-out calc(0.2s * 1) flip-card;
 }
-section article.flip:nth-of-type(2) .back {
+article.flip:nth-of-type(2) .back {
   animation: 1.2s ease-out calc(0.2s * 1) flip-card-back;
 }
-section article.flip:nth-of-type(3) figure {
+article.flip:nth-of-type(3) figure {
   animation: 1.2s ease-out calc(0.2s * 2) flip-card;
 }
-section article.flip:nth-of-type(3) .back {
+article.flip:nth-of-type(3) .back {
   animation: 1.2s ease-out calc(0.2s * 2) flip-card-back;
 }
-section article.flip:nth-of-type(4) figure {
+article.flip:nth-of-type(4) figure {
   animation: 1.2s ease-out calc(0.2s * 3) flip-card;
 }
-section article.flip:nth-of-type(4) .back {
+article.flip:nth-of-type(4) .back {
   animation: 1.2s ease-out calc(0.2s * 3) flip-card-back;
 }
 
@@ -133,13 +137,13 @@ section article.flip:nth-of-type(4) .back {
     transform: perspective(800px) rotateY(0deg);
   }
   10% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(60deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(60deg);
   }
   50% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(180deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(180deg);
   }
   60% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(180deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(180deg);
   }
   100% {
     transform: perspective(800px) rotateY(360deg);
@@ -150,13 +154,13 @@ section article.flip:nth-of-type(4) .back {
     transform: perspective(800px) rotateY(180deg);
   }
   10% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(240deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(240deg);
   }
   50% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(360deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(360deg);
   }
   60% {
-    transform: perspective(800px) translateX(-2.25vw) rotateY(360deg);
+    transform: perspective(800px) translateX(-5.4vw) rotateY(360deg);
   }
   100% {
     transform: perspective(800px) rotateY(180deg);
@@ -171,10 +175,10 @@ nav li {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 160px;
-  height: 40px;
+  width: 140px;
+  height: 34px;
   border-radius: 20px;
-  border: 1px solid white;
+  border: 1px solid black;
   cursor: pointer;
   margin-right: 40px;
 }
@@ -182,9 +186,9 @@ nav li:nth-last-of-type(1) {
   margin-right: 0;
 }
 nav li a {
-  color: white;
+  color: black;
   text-transform: capitalize;
-  font-size: medium;
+  font-size: small;
   font-family: "jsMath-cmti10";
 }
 nav li.on {
@@ -232,15 +236,12 @@ nav li.on.holographic .texture.bottom {
   background-position: 50% 50%;
 }
 nav li.on.plastic {
-  background-color: white;
-}
-nav li.on.plastic a {
-  color: #181818;
+  background-color: black;
 }
 nav li.on.gold {
   background-color: #c09a4f;
 }
-nav li.on.peral {
+nav li.on.pearl {
   background-color: #657ed6;
 }
 nav li.on.holographic {
@@ -248,6 +249,9 @@ nav li.on.holographic {
 }
 nav li.on .texture {
   animation: 3.5s ease-in-out 0s move-background-position infinite alternate;
+}
+nav li.on a {
+  color: #fff;
 }
 
 @keyframes move-background-position {
@@ -273,22 +277,116 @@ figure {
 body {
   width: 100%;
   height: 100vh;
-  padding: 15vh 15vw 10vh 15vw;
+  padding: 12.5vh 15vw 10vh 15vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #1c0d05;
-  background-color: #181818;
+}
+body #paint {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  transform: translate(-50%);
+  width: 75%;
+  height: 150%;
+  border: 10px solid #fff;
+  background-clip: content-box;
+  background-color: #000;
+  transition: background-color 1.8s ease-in-out;
+}
+body #paint.gold {
+  background-color: #c09a4f;
+}
+body #paint.pearl {
+  background-color: #a7aed0;
+}
+body #paint.holographic {
+  background-color: #657ed6;
+}
+body #paint img {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  mix-blend-mode: lighten;
+  background-color: white;
 }
 
 header p {
-  font-family: "Libre Bodoni", serif;
-  font-size: 3rem;
+  font-family: "Libre Barcode 39 Text", sans-serif;
+  font-size: 2.75rem;
   font-weight: normal;
-  font-style: italic;
   letter-spacing: -2px;
-  color: #c09a4f;
-  color: white;
+  color: #000;
+}
+
+section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+#modal article {
+  position: absolute;
+  transform: none;
+  margin-right: 0;
+  left: 50%;
+  top: 100%;
+  margin-left: -15vh;
+  width: 30vh;
+  transition: top 0.5s;
+}
+#modal article figure {
+  cursor: initial;
+}
+#modal article .back {
+  border-width: 0.75rem;
+}
+#modal.on {
+  opacity: 1;
+  pointer-events: initial;
+}
+#modal.on article {
+  top: calc(50% - 22.5vh);
+}
+#modal.on article figure {
+  animation: 0.5s ease-out flip-modal-card;
+}
+#modal.on article .back {
+  animation: 0.5s ease-out flip-modal-card-back;
+}
+
+@keyframes flip-modal-card {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes flip-modal-card-back {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

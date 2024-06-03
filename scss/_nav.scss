@@ -1,4 +1,4 @@
-$textWhite: white;
+$textColor: black;
 
 nav {
   display: flex;
@@ -11,10 +11,10 @@ nav {
     justify-content: center;
     align-items: center;
 
-    width: 160px;
-    height: 40px;
+    width: 140px;
+    height: 34px;
     border-radius: 20px;
-    border: 1px solid $textWhite;
+    border: 1px solid $textColor;
     cursor: pointer;
 
     margin-right: 40px;
@@ -24,9 +24,9 @@ nav {
     }
 
     a {
-      color: $textWhite;
+      color: $textColor;
       text-transform: capitalize;
-      font-size: medium;
+      font-size: small;
       font-family: "jsMath-cmti10";
     }
 
@@ -35,16 +35,12 @@ nav {
       border: none;
 
       &.plastic {
-        background-color: $textWhite;
-
-        a {
-          color: #181818;
-        }
+        background-color: $textColor;
       }
       &.gold {
         background-color: $textGold;
       }
-      &.peral {
+      &.pearl {
         background-color: $bgPearl;
       }
       &.holographic {
@@ -54,6 +50,10 @@ nav {
       .texture {
         animation: 3.5s ease-in-out 0s move-background-position infinite
           alternate;
+      }
+
+      a {
+        color: #fff;
       }
     }
   }
