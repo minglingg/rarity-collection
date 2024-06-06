@@ -6,7 +6,7 @@
 
 - Vanilla JS
 - Sass
-- `offsetX`, `offsetY` in mousemove event
+- mouse events for Desktop, touch events for mobile
 - CSS: 3D Rotation (for Card)
 - CSS: Image Mask (for Background)
 
