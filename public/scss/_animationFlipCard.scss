@@ -1,0 +1,27 @@
+article {
+  figure {
+    animation: 0.5s ease-out flip-modal-card;
+  }
+
+  .back {
+    animation: 0.5s ease-out flip-modal-card-back;
+  }
+}
+
+@keyframes flip-modal-card {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flip-modal-card-back {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}

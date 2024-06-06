@@ -26,6 +26,7 @@ article:nth-of-type(4) {
 }
 article figure,
 article .back {
+  overflow: hidden;
   border-radius: 0.6vw;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 0.25px solid #000;
@@ -176,6 +177,10 @@ article.flip:nth-of-type(4) .back {
     transform: rotateY(180deg);
   }
 }
+@font-face {
+  font-family: jsmath-cmti10;
+  src: url(../font/jsMath-cmti10.ttf) format("truetype");
+}
 nav {
   display: flex;
   justify-content: center;
@@ -197,7 +202,7 @@ nav li a {
   color: black;
   text-transform: capitalize;
   font-size: small;
-  font-family: "jsMath-cmti10";
+  font-family: jsmath-cmti10, serif;
 }
 nav li.on {
   border: none;
@@ -271,6 +276,96 @@ nav li.on a {
     background-position-y: 100%;
   }
 }
+@media (max-width: 576px) {
+  nav li {
+    width: 130px;
+    margin: 10px 8px;
+  }
+}
+.modal {
+  pointer-events: none;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+#featured {
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  cursor: pointer;
+}
+#featured article {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: none;
+  margin-right: 0;
+  margin-left: -15vh;
+  width: 30vh;
+  transition: top 0.5s;
+}
+#featured article figure {
+  cursor: initial;
+}
+#featured article .back {
+  border-width: 0.75rem;
+}
+#featured article figure,
+#featured article .back {
+  border-radius: 1.2vh;
+}
+#featured.on {
+  opacity: 1;
+  pointer-events: initial;
+}
+#featured.on article {
+  top: calc(50% - 22.5vh);
+}
+#featured.on article figure {
+  animation: 0.5s ease-out flip-modal-card;
+}
+#featured.on article .back {
+  animation: 0.5s ease-out flip-modal-card-back;
+}
+@keyframes flip-modal-card {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes flip-modal-card-back {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+#loading {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#loading div {
+  max-height: 0;
+  overflow: hidden;
+}
+#loading p {
+  font-family: "Source Code Pro", monospace;
+  margin: 10px;
+}
+#loading.finished {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   padding: 0 0;
@@ -340,68 +435,6 @@ section {
   align-items: center;
 }
 
-#modal {
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
-  left: 0;
-  top: 0;
-  cursor: pointer;
-}
-#modal article {
-  position: absolute;
-  transform: none;
-  margin-right: 0;
-  left: 50%;
-  top: 100%;
-  margin-left: -15vh;
-  width: 30vh;
-  transition: top 0.5s;
-}
-#modal article figure {
-  cursor: initial;
-}
-#modal article .back {
-  border-width: 0.75rem;
-}
-#modal article figure,
-#modal article .back {
-  border-radius: 1.2vh;
-}
-#modal.on {
-  opacity: 1;
-  pointer-events: initial;
-}
-#modal.on article {
-  top: calc(50% - 22.5vh);
-}
-#modal.on article figure {
-  animation: 0.5s ease-out flip-modal-card;
-}
-#modal.on article .back {
-  animation: 0.5s ease-out flip-modal-card-back;
-}
-
-@keyframes flip-modal-card {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(0deg);
-  }
-}
-@keyframes flip-modal-card-back {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(180deg);
-  }
-}
 @media (max-width: 576px) {
   body {
     padding: 7.5vh 10vw 5vh 10vw;

@@ -1,11 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+require("dotenv").config();
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA8hKyRIZ80WStr30ayRGZ-YIGBbwP7Bms",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "rarity-collection-98cd2.firebaseapp.com",
   projectId: "rarity-collection-98cd2",
   storageBucket: "rarity-collection-98cd2.appspot.com",

@@ -6,26 +6,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.cdnfonts.com/css/jsmath-cmti10"
-      rel="stylesheet"
-    />
-    <link
       href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <script defer src="js/main.js"></script>
-    <script defer src="js/firebase.js"></script>
+    <script defer src="./js/main.js"></script>
     <title>Rarity Collection</title>
   </head>
   <body>
     <header>
       <p>Rarity Collection</p>
     </header>
+
     <section>
       <div id="paint" class="plastic"></div>
       <article>
@@ -88,7 +84,7 @@
       </li>
     </nav>
 
-    <div id="modal">
+    <div id="featured" class="modal">
       <article>
         <figure class="plastic">
           <div class="overlay"></div>
@@ -99,5 +95,30 @@
         <div class="back"></div>
       </article>
     </div>
+
+    <div id="loading" class="modal">
+      <div></div>
+      <p>Loading...</p>
+    </div>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA8hKyRIZ80WStr30ayRGZ-YIGBbwP7Bms",
+        authDomain: "rarity-collection-98cd2.firebaseapp.com",
+        projectId: "rarity-collection-98cd2",
+        storageBucket: "rarity-collection-98cd2.appspot.com",
+        messagingSenderId: "1009564243558",
+        appId: "1:1009564243558:web:8b083cfab057efe50b7fa7",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>

@@ -1,4 +1,8 @@
 $textColor: black;
+@font-face {
+  font-family: jsmath-cmti10;
+  src: url(../font/jsMath-cmti10.ttf) format("truetype");
+}
 
 nav {
   display: flex;
@@ -24,7 +28,7 @@ nav {
       color: $textColor;
       text-transform: capitalize;
       font-size: small;
-      font-family: "jsMath-cmti10";
+      font-family: jsmath-cmti10, serif;
     }
 
     &.on {
@@ -66,4 +70,8 @@ nav {
 }
 
 @media (max-width: 576px) {
+  nav li {
+    width: 130px;
+    margin: 10px 8px;
+  }
 }
