@@ -11,28 +11,42 @@ let currVariation = variations[0];
 let navDisabled = false;
 
 // card animations
-// TODO: 카드 기울이는 로직에 오버헤드 심함 (특히 모달에서)
 cards.forEach((card) => {
   const textures = card.querySelectorAll(".texture");
   const overlay = card.querySelector(".overlay");
   card.addEventListener("mousemove", (e) => {
-    var x = e.offsetX;
-    var y = e.offsetY;
-    var rotateX = 0.2 * y - 20;
-    var rotateY = -0.2 * x + 20;
+    let { width, height } = document.defaultView.getComputedStyle(card);
+    width = parseFloat(width.replace("px", ""));
+    height = parseFloat(height.replace("px", ""));
+    const percentX = (e.offsetX / width) * 100;
+    const percentY = (e.offsetY / height) * 100;
 
-    overlay.style = `background-position : ${
-      x / 5 + y / 5
-    }%; filter : opacity(${x / 200}) brightness(1.2)`;
-    for (let texture of textures)
-      texture.style = `background-position : ${x / 5 + y / 5}%`;
+    const rotateX = 0.6 * Math.max(0, percentY) - 30;
+    const rotateY = -0.6 * Math.max(0, percentX) + 30;
 
-    card.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    switch (currVariation) {
+      case "pearl":
+        overlay.style = `background-position: ${100 - percentX}% ${
+          100 - percentY
+        }%;
+        filter: opacity(0.4)`;
+        for (let texture of textures)
+          texture.style = `background-position: ${(percentX + percentY) / 2}%`;
+        break;
+      default:
+        overlay.style = `background-position: ${percentX}% ${percentY}%;
+        filter: opacity(${percentX / 200 + 0.5})`;
+        for (let texture of textures)
+          texture.style = `background-position: ${(percentX + percentY) / 2}%`;
+        break;
+    }
+
+    card.style = `transform: rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
 
   card.addEventListener("mouseout", () => {
-    overlay.style = "filter : opacity(0)";
-    card.style = "transform : perspective(350px) rotateY(0deg) rotateX(0deg)";
+    overlay.style = "filter: opacity(0)";
+    card.style = "transform: rotateY(0deg) rotateX(0deg)";
   });
 });
 
@@ -91,6 +105,7 @@ navBtns.forEach((button) => {
           cardHolder.classList.remove("flip");
         navDisabled = false;
         currVariation = newVariation;
+        console.log(currVariation);
       }, 1800);
     }
   });

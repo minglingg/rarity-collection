@@ -2,6 +2,7 @@ $cardSizeUnit: 6vw;
 
 article {
   position: relative;
+  perspective: 400px;
 
   &:nth-of-type(1) {
     z-index: 1;
@@ -28,7 +29,7 @@ article {
 
   figure,
   .back {
-    border-radius: calc(max(0.1 * $cardSizeUnit));
+    border-radius: calc(0.1 * $cardSizeUnit);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 0.25px solid #000;
   }
@@ -56,11 +57,29 @@ article {
         rgba(132, 50, 255, 0.6) 50%,
         transparent 54%
       );
-      filter: brightness(1.1) opacity(0.8);
+      filter: brightness(1.1) opacity(0);
       mix-blend-mode: color-dodge;
       background-size: 150% 150%;
       background-position: 100%;
       transition: all 0.1s;
+    }
+
+    &.gold {
+      .overlay {
+        background: none;
+      }
+    }
+
+    &.pearl {
+      .overlay {
+        background: radial-gradient(
+          rgba(255, 219, 112, 0.8),
+          rgba(132, 50, 255, 0.6),
+          transparent 40%
+        );
+        background-size: 300% 200%;
+        background-repeat: no-repeat;
+      }
     }
 
     img {
@@ -103,42 +122,36 @@ article {
 
 @keyframes flip-card {
   0% {
-    transform: perspective(800px) rotateY(0deg);
+    transform: rotateY(0deg);
   }
   10% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(60deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(60deg);
   }
   50% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(180deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(180deg);
   }
   60% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(180deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(180deg);
   }
   100% {
-    transform: perspective(800px) rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
 
 @keyframes flip-card-back {
   0% {
-    transform: perspective(800px) rotateY(180deg);
+    transform: rotateY(180deg);
   }
   10% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(240deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(240deg);
   }
   50% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(360deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(360deg);
   }
   60% {
-    transform: perspective(800px) translateX(calc(-0.9 * $cardSizeUnit))
-      rotateY(360deg);
+    transform: translateX(calc(-0.9 * $cardSizeUnit)) rotateY(360deg);
   }
   100% {
-    transform: perspective(800px) rotateY(180deg);
+    transform: rotateY(180deg);
   }
 }
